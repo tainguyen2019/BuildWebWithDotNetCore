@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BuildWebWithDotNetCore.Models.Home;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuildWebWithDotNetCore.Controllers.Admin
@@ -24,6 +25,7 @@ namespace BuildWebWithDotNetCore.Controllers.Admin
             var result = data.Where(account => account.Email == email && account.Password == password).ToArray();
             if(result.Length > 0)
             {
+                HttpContext.Session.SetString("isLogin", "ok");
                 return Redirect("/admin");
 
             }

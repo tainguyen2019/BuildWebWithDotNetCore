@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BuildWebWithDotNetCore.Models;
 using BuildWebWithDotNetCore.Models.Home;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuildWebWithDotNetCore.Controllers
@@ -16,11 +17,10 @@ namespace BuildWebWithDotNetCore.Controllers
 
         public IActionResult Index()
         {
-            //var data = new HomeModel().Test();
-            //var result = data.Where(account => account.Email == "admin@gmail.com");
-            //ViewBag.data = result;
-
-            return View("~/Views/Admin/AdminPage.cshtml");
+            if(HttpContext.Session.GetString("isLogin") == "ok")
+                return View("~/Views/Admin/AdminPage.cshtml");
+            else
+                return Redirect("/admin/login");
         }
 
         [Route("admin/home/welcome")]

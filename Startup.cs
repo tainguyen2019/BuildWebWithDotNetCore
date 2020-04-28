@@ -25,7 +25,12 @@ namespace BuildWebWithDotNetCore
         {
             services.AddControllersWithViews();
             services.AddDistributedMemoryCache();
-            services.AddSession();
+            services.AddSession(options => {
+                options.Cookie.Name = ".WebTrainingRoom.Session";
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
+                options.Cookie.IsEssential = true;
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
