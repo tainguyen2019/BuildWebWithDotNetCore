@@ -1,0 +1,24 @@
+﻿@*<h1>This is Index.cshtml page</h1>
+@if (ViewData["message"] != null)
+{
+    <p>@ViewData["message"]</p>
+}
+@if (ViewData["id"] != null)
+{
+    <p>@ViewData["id"]</p>
+}
+@if (ViewBag.data != null)
+{
+    @foreach(var account in ViewBag.data)
+    {
+        <p>@account.Email</p>
+        <p>@account.Password</p>
+    }
+}*@
+
+<h1>This is Admin Page</h1>
+@if(ViewBag.email != null && ViewBag.password != null)
+{
+    <p>@ViewBag.email</p>
+    <p>@ViewBag.password</p>
+}
