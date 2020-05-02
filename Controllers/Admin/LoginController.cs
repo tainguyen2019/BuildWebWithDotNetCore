@@ -17,11 +17,20 @@ namespace BuildWebWithDotNetCore.Controllers.Admin
             return View("~/Views/Admin/LoginPage.cshtml");
         }
 
+
+        [Route("admin/logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("isLogin");
+            return Redirect("login");
+        }
+
+
         [HttpPost]
         [Route("admin/login")]
         public IActionResult checkLogin(string email,string password)
         {
-            var data = new HomeModel().Test();
+            var data = new ProductModel().getAccount();
             var result = data.Where(account => account.Email == email && account.Password == password).ToArray();
             if(result.Length > 0)
             {

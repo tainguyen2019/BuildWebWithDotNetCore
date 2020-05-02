@@ -1,24 +1,21 @@
-﻿@*<h1>This is Index.cshtml page</h1>
-@if (ViewData["message"] != null)
-{
-    <p>@ViewData["message"]</p>
-}
-@if (ViewData["id"] != null)
-{
-    <p>@ViewData["id"]</p>
-}
-@if (ViewBag.data != null)
-{
-    @foreach(var account in ViewBag.data)
-    {
-        <p>@account.Email</p>
-        <p>@account.Password</p>
-    }
-}*@
+﻿<html>
 
-<h1>This is Admin Page</h1>
-@if(ViewBag.email != null && ViewBag.password != null)
-{
-    <p>@ViewBag.email</p>
-    <p>@ViewBag.password</p>
-}
+<head>
+    <partial name="~/Views/Admin/template/header.cshtml" />
+    <link rel="stylesheet" href="~/css/AdminPage.css">
+    <title>Trang admin</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <partial name="~/Views/Admin/template/navigation.cshtml" />
+    <div class="row flex-grow-1 m-0">
+        <partial name="~/Views/Admin/template/sidebar.cshtml"/>
+        
+        <div class="col-md-10 bg-light">
+            <h1>Trang chủ</h1>
+            <hr>
+        </div>
+    </div>
+</body>
+
+</html>

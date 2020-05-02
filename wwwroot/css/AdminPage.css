@@ -1,0 +1,26 @@
+﻿.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0;
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 48px;
+    height: calc(100vh - 200px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.nav-link {
+    color: black;
+    font-weight: bolder;
+}
+
+    .nav-link:hover {
+        font-weight: bolder;
+        color: white;
+    }
