@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BuildWebWithDotNetCore.Models.Database;
 using BuildWebWithDotNetCore.Models.Home;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,11 +29,16 @@ namespace BuildWebWithDotNetCore.Controllers.Admin
 
         [HttpPost]
         [Route("admin/login")]
-        public IActionResult checkLogin(string email,string password)
+        public IActionResult checkLogin(string email, string password)
         {
-            var data = new ProductModel().getAccount();
-            var result = data.Where(account => account.Email == email && account.Password == password).ToArray();
-            if(result.Length > 0)
+            DatabaseContext databaseContext = new DatabaseContext();
+            var data = databaseContext.account;
+            var result = data.Where(account => account.email == email 
+                                                && account.password == password 
+                                                && account.role == 1)
+                        .ToArray();
+
+            if (result.Length > 0)
             {
                 HttpContext.Session.SetString("isLogin", "ok");
                 return Redirect("/admin");

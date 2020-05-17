@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace BuildWebWithDotNetCore.Models.Home
 {
-    public class Product
+    public class ProductModel
     {
-        private int id{ get; set; }
-        private string tensp{ get; set; }
-        private int loaisp{ get; set; }
-        private int soluong{ get; set; }
-        private double gia { get; set; }
+        private int id;
+        private string tensp;
+        private string loaisp;
+        private int soluong;
+        private double gia ;
 
-        public Product() { }
-
-        public Product(int ID, string TenSP, int LoaiSP, int Soluong , double Gia)
+        public ProductModel(int ID, string TenSP, string LoaiSP, int SoLuong, double Gia)
         {
             id = ID;
             tensp = TenSP;
             loaisp = LoaiSP;
-            soluong = Soluong;
+            soluong = SoLuong;
             gia = Gia;
         }
+
+        public ProductModel() { }
 
         public int ID
         {
@@ -35,7 +36,7 @@ namespace BuildWebWithDotNetCore.Models.Home
             set { tensp = value; }
         }
 
-        public int LoaiSP
+        public string LoaiSP
         {
             get { return loaisp; }
             set { loaisp = value; }

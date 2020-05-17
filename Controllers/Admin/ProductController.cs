@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
+using BuildWebWithDotNetCore.Models.Database;
 using BuildWebWithDotNetCore.Models.Home;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,19 +18,20 @@ namespace BuildWebWithDotNetCore.Controllers.Admin
         [Route("admin/products/index")]
         public IActionResult Index()
         {
-            var products = new ProductModel().getProduct();
-            var categories = new ProductModel().getCategory();
+            DatabaseContext databaseContext = new DatabaseContext();
+            var products = databaseContext.product;
+            var categories = databaseContext.category;
 
             var innerJoin = from product in products
                             join category in categories
-                            on product.LoaiSP equals category.ID
+                            on product.category_id equals category.category_id
                             select new ProductModel
                             (
-                                product.ID,
-                                product.TenSP,
-                                category.LoaiSP,
-                                product.SoLuong,
-                                product.Gia
+                                product.product_id,
+                                product.product_name,
+                                category.category_name,
+                                product.quantity,
+                                product.price
                             );
 
             ViewBag.datas = innerJoin;
