@@ -15,9 +15,8 @@ namespace BuildWebWithDotNetCore.Models.Home
 
         public Customer() { }
 
-        public Customer(int CustomerID, string CustomerName, string Phone, string Address, int AccountID)
+        public Customer( string CustomerName, string Phone, string Address, int AccountID)
         {
-            this.customer_id = CustomerID;
             this.customer_name = CustomerName;
             this.phone = Phone;
             this.address = Address;

@@ -1,0 +1,123 @@
+body{
+    background-color:  whitesmoke;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.wrapped{
+    width:100%;
+    height: 100%;
+    z-index: 0;  
+}
+input[type="submit"],button{
+    cursor: pointer;
+}
+.form-wrapped{
+    width : 430px;
+    height: auto;
+    display: block;
+    background-color: #fff;
+    margin-bottom: 50px;
+    transform: translate(120%, 30%);
+}
+
+.login-form,.signup-form{
+    width : 100%;
+    height: 100%;
+    padding : 10px;
+}
+.component-btn-submit{
+    margin: 17px 0;
+}
+.login-form{
+    border : 1px solid rgba(0,0,0,0.8);
+}
+.signup-form{
+    display: none;
+}
+.login-form-header,.signup-header{
+    width : 100%;
+    height : 25%;
+    text-align: center;
+}
+.title-header{
+    margin: 10px auto;
+    font-weight: normal;
+    color: #6f7678;
+}   
+.form-field{
+    position: relative;
+    display: block;
+    width : 100%;
+    height: 54px;
+    text-align: center;
+}
+
+.form-field-box label
+{
+    margin-left: 15px;
+    color: #3c763d;
+    font-weight: 700;
+}
+
+.form-field input[type="text"],input[type="password"]
+{
+    padding : 7px 15px;
+    border : 1px solid #e1e2e3 ;
+    min-height: 45px;
+}
+#signin-email, #signin-password, #signup-email, #signup-password, #signup-confirm-password,
+#signup-name, #signup-phone, #signup-adress{
+    display: block;
+    margin: auto;
+    width: 95%;
+    height: 40px;
+}
+input:focus label{
+    font-family: "Brown-Pro-Regular";
+    position: absolute;
+    top: 4px;
+    left: 13%;
+    font-size: 10px;
+    font-weight: normal;
+    color: #6f7678;
+    cursor: text;
+}
+.forgot-pass{
+    text-align: right;
+    font-weight : bold;
+    color: #0000; 
+}
+.forgot-password{
+    background: 0;
+    border : 0 ;
+    color : #6f7678;
+    font-family: "Brown-Pro-Bold";
+    font-size : 18px;
+    margin: 10px ;
+    text-decoration: none;
+}
+.btn-submit,#create-user{
+    width: 80%;
+    height: 49px;
+    font-weight: bold;
+    border : 1px solid #e1e2e3 ;
+    background : none;
+    font-size: 22px;
+}
+.btn-submit{
+    text-align: center;
+    background: #00b8fc;
+    border: #00b8fc ;
+    color: black;
+}
+#create-user{
+    border: none;
+    color: #fff;
+    background: #ffd907;
+    font-family: "Brown-Pro-Bold";
+    text-transform: uppercase;
+}

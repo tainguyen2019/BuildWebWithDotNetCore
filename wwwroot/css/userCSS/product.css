@@ -1,0 +1,220 @@
+body{
+    box-sizing: border-box;
+}
+input[type=checkbox]::selection {
+    background-color: rgba(0,184,252,0.99) !important;
+    color: #2f3132 !important;
+}
+
+.border-none{
+    border: none !important;
+}
+.bg-color-none{
+    background-color: none !important;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    margin : 0 10px;  
+}
+#product-panel{
+    height:600px;
+    width: 100%;
+    display: block;
+    position : relative;
+}
+#product-panel img{
+    display: block;
+    width : 100%;
+    height : 100%;
+}
+#title{
+    position : absolute;
+    top: 40%;
+    left: 29%;
+    text-align: center;
+}
+.title-text,.sub-title-text{
+    color: aliceblue;
+}
+.title-text{
+    font-size: 4rem;
+}
+.sub-title-text{
+    margin-top: 18px;
+    font-size: 1.5rem;
+}
+.content{
+    height: 1500px;
+}
+.sidebar{
+    width: 350px;
+    height: auto;
+    position: sticky;
+    top: 0;
+}
+.main-content{
+    width: 950px;
+    height: auto;
+    margin: 0 20px;
+}
+.card-size{
+    width : 300px;
+    height: auto;
+    margin-left: 10px;
+}
+.card-header
+{
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+}
+.btn-size{
+    font-size: 20px;
+    background-color: transparent;
+    color : #676767;
+    font-weight: 700;
+}
+.card-body ul{
+    list-style: none;
+}
+.card-body ul li{
+    display: flex;
+    text-align: center;
+}
+.checkbox-inline{
+    font-weight: 700;
+    color: #2f3132;
+    display: block;
+    position: relative;
+    cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.checkbox-form{
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+    background-color: #eee;
+}
+.checkmark{
+   position: absolute;
+   top : 0 ;
+   left: 0;
+   height: 25px;
+   width : 25px;
+   background-color: #eee;
+}
+/* On mouse-over, add a grey background color */
+.checkbox-inline:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .checkbox-inline input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .checkbox-inline input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .checkbox-inline .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 7px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/*.list-product*/
+.list-product{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
+.product-card{
+    width: 17rem;
+    margin: 15px 22px;
+}
+.product-name{
+    position: absolute;
+    top: 20px;
+    left: 7px;
+    font-size: 18px;
+}
+.product-price{
+    position: absolute;
+    top: 80px;
+    left: 7px;
+    font-size: 24px;
+}
+.card-body-size{
+    height : 180px;
+}
+.btn-submit{
+    width: 200px;
+    height: 46px;
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight : bold
+}
+.btn-effect{
+    box-shadow: 0 0 14px rgb(0, 123, 255, 0.4);
+    position: absolute;
+    bottom: 7px;
+}
+label .filter-text{
+    margin-left: 30px;
+}
+
+
+.img-product-effect{
+    transform : translateY(-10px);
+    transition : transform 250ms ease-in;
+}
+.product-card:hover .img-product-effect
+{
+    transform: translateY(0);
+}
+
+.cart-container{
+    position: sticky;
+    display: inline;
+    border: 1px solid rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 23px;
+    padding: 5px 7px;
+    border-radius: 12px;
+    transition: background-color 0.2s ease-in;
+}
+.cart-container:hover{
+ background-color: rgba(0,184,252,0.99);
+}
+.pagination{
+    list-style: none;
+}
+.page-item{
+    display: inline-block;
+}
+
+

@@ -5,13 +5,194 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Home\**" />
+    <Content Remove="Models\Home\**" />
+    <EmbeddedResource Remove="Models\Home\**" />
+    <None Remove="Models\Home\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\home.css" />
+    <Content Remove="wwwroot\images\banphim-45.jpg" />
+    <Content Remove="wwwroot\images\banphim-46.jpg" />
+    <Content Remove="wwwroot\images\banphim-47.jpg" />
+    <Content Remove="wwwroot\images\banphim-48.jpg" />
+    <Content Remove="wwwroot\images\banphim-49.jpg" />
+    <Content Remove="wwwroot\images\banphim-50.jpg" />
+    <Content Remove="wwwroot\images\banphim-51.jpg" />
+    <Content Remove="wwwroot\images\banphim_button.jpeg" />
+    <Content Remove="wwwroot\images\bg-form-login.jpg" />
+    <Content Remove="wwwroot\images\chuot-23.jpg" />
+    <Content Remove="wwwroot\images\chuot-24.jpg" />
+    <Content Remove="wwwroot\images\chuot-25.jpg" />
+    <Content Remove="wwwroot\images\chuot-26.jpg" />
+    <Content Remove="wwwroot\images\chuot-27.jpg" />
+    <Content Remove="wwwroot\images\chuot-28.jpg" />
+    <Content Remove="wwwroot\images\chuot-29.jpg" />
+    <Content Remove="wwwroot\images\chuot-30.jpg" />
+    <Content Remove="wwwroot\images\chuot-31.jpg" />
+    <Content Remove="wwwroot\images\chuot-32.jpg" />
+    <Content Remove="wwwroot\images\chuot-33.jpg" />
+    <Content Remove="wwwroot\images\chuot-34.jpg" />
+    <Content Remove="wwwroot\images\chuot-gaming.jpeg" />
+    <Content Remove="wwwroot\images\chuot_button.jpeg" />
+    <Content Remove="wwwroot\images\headphone_advertising.jpg" />
+    <Content Remove="wwwroot\images\holiday-gift-wrapping.jpg" />
+    <Content Remove="wwwroot\images\home-product-swatch-1-over.png.imgw.342.342.jpeg" />
+    <Content Remove="wwwroot\images\home-product-swatch-2-over.png.imgw.342.342.jpeg" />
+    <Content Remove="wwwroot\images\home-product-swatch-3-over.png.imgw.342.342.jpeg" />
+    <Content Remove="wwwroot\images\image-panel-1.jpeg" />
+    <Content Remove="wwwroot\images\image-panel-2.jpeg" />
+    <Content Remove="wwwroot\images\image-panel-3.jpeg" />
+    <Content Remove="wwwroot\images\image-panel-4.jpeg" />
+    <Content Remove="wwwroot\images\intro_keyboard.jpeg" />
+    <Content Remove="wwwroot\images\intro_mouse.jpeg" />
+    <Content Remove="wwwroot\images\intro_speaker.jpeg" />
+    <Content Remove="wwwroot\images\keyboard_advertising.jpg" />
+    <Content Remove="wwwroot\images\loa-35.jpg" />
+    <Content Remove="wwwroot\images\loa-36.jpg" />
+    <Content Remove="wwwroot\images\loa-37.jpg" />
+    <Content Remove="wwwroot\images\loa-38.jpg" />
+    <Content Remove="wwwroot\images\loa-39.jpg" />
+    <Content Remove="wwwroot\images\loa-40.jpg" />
+    <Content Remove="wwwroot\images\loa-41.jpg" />
+    <Content Remove="wwwroot\images\loa-42.jpg" />
+    <Content Remove="wwwroot\images\loa-43.jpg" />
+    <Content Remove="wwwroot\images\loa-44.jpg" />
+    <Content Remove="wwwroot\images\loa_button.jpg" />
+    <Content Remove="wwwroot\images\logitech_bcg.jpg" />
+    <Content Remove="wwwroot\images\mouse_ad.png" />
+    <Content Remove="wwwroot\images\mouse_advertising.jpg" />
+    <Content Remove="wwwroot\images\navigation-products-headphone.jpg" />
+    <Content Remove="wwwroot\images\navigation-products-keyboard.jpg" />
+    <Content Remove="wwwroot\images\navigation-products-mice.jpg" />
+    <Content Remove="wwwroot\images\navigation-products-speaker.png" />
+    <Content Remove="wwwroot\images\navigation-promo-banner-desktop.jpg.imgw.2400.2400.jpeg" />
+    <Content Remove="wwwroot\images\slide_show-1.jpeg" />
+    <Content Remove="wwwroot\images\slide_show-2.jpeg" />
+    <Content Remove="wwwroot\images\slide_show-3.jpeg" />
+    <Content Remove="wwwroot\images\slide_show-4.jpeg" />
+    <Content Remove="wwwroot\images\speaker_advertising.jpg" />
+    <Content Remove="wwwroot\images\tainghe-1.jpg" />
+    <Content Remove="wwwroot\images\tainghe-10.jpg" />
+    <Content Remove="wwwroot\images\tainghe-11.jpg" />
+    <Content Remove="wwwroot\images\tainghe-12.jpg" />
+    <Content Remove="wwwroot\images\tainghe-13.jpg" />
+    <Content Remove="wwwroot\images\tainghe-14.jpg" />
+    <Content Remove="wwwroot\images\tainghe-15.jpg" />
+    <Content Remove="wwwroot\images\tainghe-16.jpg" />
+    <Content Remove="wwwroot\images\tainghe-17.jpg" />
+    <Content Remove="wwwroot\images\tainghe-18.jpg" />
+    <Content Remove="wwwroot\images\tainghe-19.jpg" />
+    <Content Remove="wwwroot\images\tainghe-2.jpg" />
+    <Content Remove="wwwroot\images\tainghe-20.jpg" />
+    <Content Remove="wwwroot\images\tainghe-21.jpg" />
+    <Content Remove="wwwroot\images\tainghe-22.jpg" />
+    <Content Remove="wwwroot\images\tainghe-3.jpg" />
+    <Content Remove="wwwroot\images\tainghe-4.jpg" />
+    <Content Remove="wwwroot\images\tainghe-5.jpg" />
+    <Content Remove="wwwroot\images\tainghe-6.jpg" />
+    <Content Remove="wwwroot\images\tainghe-7.jpg" />
+    <Content Remove="wwwroot\images\tainghe-8.jpg" />
+    <Content Remove="wwwroot\images\tainghe-9.jpg" />
+    <Content Remove="wwwroot\images\tainghe_button.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.20" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Home\" />
+    <Folder Include="wwwroot\css\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\home.css" />
+    <None Include="wwwroot\images\banphim-45.jpg" />
+    <None Include="wwwroot\images\banphim-46.jpg" />
+    <None Include="wwwroot\images\banphim-47.jpg" />
+    <None Include="wwwroot\images\banphim-48.jpg" />
+    <None Include="wwwroot\images\banphim-49.jpg" />
+    <None Include="wwwroot\images\banphim-50.jpg" />
+    <None Include="wwwroot\images\banphim-51.jpg" />
+    <None Include="wwwroot\images\banphim_button.jpeg" />
+    <None Include="wwwroot\images\bg-form-login.jpg" />
+    <None Include="wwwroot\images\chuot-23.jpg" />
+    <None Include="wwwroot\images\chuot-24.jpg" />
+    <None Include="wwwroot\images\chuot-25.jpg" />
+    <None Include="wwwroot\images\chuot-26.jpg" />
+    <None Include="wwwroot\images\chuot-27.jpg" />
+    <None Include="wwwroot\images\chuot-28.jpg" />
+    <None Include="wwwroot\images\chuot-29.jpg" />
+    <None Include="wwwroot\images\chuot-30.jpg" />
+    <None Include="wwwroot\images\chuot-31.jpg" />
+    <None Include="wwwroot\images\chuot-32.jpg" />
+    <None Include="wwwroot\images\chuot-33.jpg" />
+    <None Include="wwwroot\images\chuot-34.jpg" />
+    <None Include="wwwroot\images\chuot-gaming.jpeg" />
+    <None Include="wwwroot\images\chuot_button.jpeg" />
+    <None Include="wwwroot\images\headphone_advertising.jpg" />
+    <None Include="wwwroot\images\holiday-gift-wrapping.jpg" />
+    <None Include="wwwroot\images\home-product-swatch-1-over.png.imgw.342.342.jpeg" />
+    <None Include="wwwroot\images\home-product-swatch-2-over.png.imgw.342.342.jpeg" />
+    <None Include="wwwroot\images\home-product-swatch-3-over.png.imgw.342.342.jpeg" />
+    <None Include="wwwroot\images\image-panel-1.jpeg" />
+    <None Include="wwwroot\images\image-panel-2.jpeg" />
+    <None Include="wwwroot\images\image-panel-3.jpeg" />
+    <None Include="wwwroot\images\image-panel-4.jpeg" />
+    <None Include="wwwroot\images\intro_keyboard.jpeg" />
+    <None Include="wwwroot\images\intro_mouse.jpeg" />
+    <None Include="wwwroot\images\intro_speaker.jpeg" />
+    <None Include="wwwroot\images\keyboard_advertising.jpg" />
+    <None Include="wwwroot\images\loa-35.jpg" />
+    <None Include="wwwroot\images\loa-36.jpg" />
+    <None Include="wwwroot\images\loa-37.jpg" />
+    <None Include="wwwroot\images\loa-38.jpg" />
+    <None Include="wwwroot\images\loa-39.jpg" />
+    <None Include="wwwroot\images\loa-40.jpg" />
+    <None Include="wwwroot\images\loa-41.jpg" />
+    <None Include="wwwroot\images\loa-42.jpg" />
+    <None Include="wwwroot\images\loa-43.jpg" />
+    <None Include="wwwroot\images\loa-44.jpg" />
+    <None Include="wwwroot\images\loa_button.jpg" />
+    <None Include="wwwroot\images\logitech_bcg.jpg" />
+    <None Include="wwwroot\images\mouse_ad.png" />
+    <None Include="wwwroot\images\mouse_advertising.jpg" />
+    <None Include="wwwroot\images\navigation-products-headphone.jpg" />
+    <None Include="wwwroot\images\navigation-products-keyboard.jpg" />
+    <None Include="wwwroot\images\navigation-products-mice.jpg" />
+    <None Include="wwwroot\images\navigation-products-speaker.png" />
+    <None Include="wwwroot\images\navigation-promo-banner-desktop.jpg.imgw.2400.2400.jpeg" />
+    <None Include="wwwroot\images\slide_show-1.jpeg" />
+    <None Include="wwwroot\images\slide_show-2.jpeg" />
+    <None Include="wwwroot\images\slide_show-3.jpeg" />
+    <None Include="wwwroot\images\slide_show-4.jpeg" />
+    <None Include="wwwroot\images\speaker_advertising.jpg" />
+    <None Include="wwwroot\images\tainghe-1.jpg" />
+    <None Include="wwwroot\images\tainghe-10.jpg" />
+    <None Include="wwwroot\images\tainghe-11.jpg" />
+    <None Include="wwwroot\images\tainghe-12.jpg" />
+    <None Include="wwwroot\images\tainghe-13.jpg" />
+    <None Include="wwwroot\images\tainghe-14.jpg" />
+    <None Include="wwwroot\images\tainghe-15.jpg" />
+    <None Include="wwwroot\images\tainghe-16.jpg" />
+    <None Include="wwwroot\images\tainghe-17.jpg" />
+    <None Include="wwwroot\images\tainghe-18.jpg" />
+    <None Include="wwwroot\images\tainghe-19.jpg" />
+    <None Include="wwwroot\images\tainghe-2.jpg" />
+    <None Include="wwwroot\images\tainghe-20.jpg" />
+    <None Include="wwwroot\images\tainghe-21.jpg" />
+    <None Include="wwwroot\images\tainghe-22.jpg" />
+    <None Include="wwwroot\images\tainghe-3.jpg" />
+    <None Include="wwwroot\images\tainghe-4.jpg" />
+    <None Include="wwwroot\images\tainghe-5.jpg" />
+    <None Include="wwwroot\images\tainghe-6.jpg" />
+    <None Include="wwwroot\images\tainghe-7.jpg" />
+    <None Include="wwwroot\images\tainghe-8.jpg" />
+    <None Include="wwwroot\images\tainghe-9.jpg" />
+    <None Include="wwwroot\images\tainghe_button.jpeg" />
   </ItemGroup>
 
 
