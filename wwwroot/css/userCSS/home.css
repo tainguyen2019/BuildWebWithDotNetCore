@@ -139,12 +139,12 @@ a:hover {
 
 .main-title {
     margin-bottom: 30px;
-    font-size: 50px;
+    font-size: 49px;
     font-weight: 600;
 }
 
 #product-utilities {
-    height: auto;
+    height: 240px;
     display: flex;
 }
 
@@ -166,16 +166,10 @@ a:hover {
 
 #product-utilities .contain-img img {
     width: 100%;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     border-radius: 6px;
     box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.2);
-}
-.speaker-contain-img{
-    height : 240px;
-}
-.speaker-img {
-    height: 100%;
-    object-fit: cover !important;
 }
 
 #btn-muasam {
