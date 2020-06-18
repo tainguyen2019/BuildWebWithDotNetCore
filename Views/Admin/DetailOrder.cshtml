@@ -1,0 +1,46 @@
+﻿<html>
+<head>
+    <partial name="~/Views/Admin/template/header.cshtml" />
+    <link rel="stylesheet" href="~/css/AdminPage.css">
+    <title>Trang chi tiết đơn hàng</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <partial name="~/Views/Admin/template/navigation.cshtml" />
+    <div class="row flex-grow-1 m-0">
+        <partial name="~/Views/Admin/template/sidebar.cshtml" />
+
+        <div class="col-md-10 bg-light">
+            <h1>Chi tiết đơn hàng</h1>
+            <hr>
+            <h5>Đơn hàng số @ViewBag.sale_order.order_id </h5><br>
+            <p>Ngày tạo :  @ViewBag.sale_order.create_date</p><br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá bán</th>
+                        <th>Giảm giá</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var detail in ViewBag.sale_order_lines)
+                    {
+                    <tr>
+                        <td>@detail.ProductName</td>
+                        <td>@detail.Quantity</td>
+                        <td>@string.Format("{0:#,0}", detail.Price) VND</td>
+                        <td>@(detail.Discount * 100) %</td>
+                        <td>@string.Format("{0:#,0}", detail.Amount) VND</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <h5 class="float-right m-5">Tổng tiền:  @string.Format("{0:#,0}", ViewBag.sale_order.total) VND</h5><br>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -15,13 +15,13 @@ namespace BuildWebWithDotNetCore.Models.Home
         public double price { get; set; }
         public string image { get; set; }
         public int status { get; set; }
-
+        public string description { get; set; }
 
 
         public Product() { }
 
         public Product(int ProductID, string ProductName, int CategoryID, int BrandID, 
-                        int Quantity, double Price, string Image, int Status)
+                        int Quantity, double Price, string Image, int Status, string Description)
         {
             this.product_id = ProductID;
             this.product_name = ProductName;
@@ -31,6 +31,7 @@ namespace BuildWebWithDotNetCore.Models.Home
             this.price = Price;
             this.image = Image;
             this.status = Status;
+            this.description = Description;
         }
     }
 }

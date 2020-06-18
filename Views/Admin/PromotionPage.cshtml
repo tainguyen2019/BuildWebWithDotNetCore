@@ -1,0 +1,101 @@
+﻿<html>
+<head>
+    <partial name="~/Views/Admin/template/header.cshtml" />
+    <link rel="stylesheet" href="~/css/AdminPage.css">
+    <title>Trang khuyến mãi</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <partial name="~/Views/Admin/template/navigation.cshtml" />
+    <div class="row flex-grow-1 m-0">
+        <partial name="~/Views/Admin/template/sidebar.cshtml" />
+        <div class="col-md-10 bg-light">
+            <h1>Thông tin khuyến mãi</h1>
+            <hr>
+
+            <a href="~/admin/promotions/new" class="float-right mb-2 mr-4" title="Thêm mới">
+                <i class="fas fa-plus"> Thêm mới</i>
+            </a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mã code</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Ngày bắt đầu</th>
+                        <th>Ngày kết thúc</th>
+                        <th>Giảm giá</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var record in ViewBag.datas)
+                    {
+                        <tr>
+                            <td>@record.PromotionCode</td>
+                            <td>@record.ProductName</td>
+                            <td>@record.ValidDate.ToString("dd-MM-yyyy")</td>
+                            <td>@record.ExpiryDate.ToString("dd-MM-yyyy")</td>
+                            <td>@Convert.ToInt32(record.Discount * 100) %</td>
+                            <td>
+                                <a href="~/admin/promotions/edit?promotion_code=@record.PromotionCode"
+                                   class="text-decoration-none m-4" title="Sửa">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="~/admin/promotions/delete?promotion_code=@record.PromotionCode"
+                                   class="text-decoration-none" title="Xóa" onclick="return confirm('Bạn muốn xóa khuyến mãi này ? ')">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="float-right mr-2">
+                <nav>
+                    <ul class="pagination">
+                        @{
+                            int page = ViewBag.page;
+                            int total_pages = ViewBag.total_pages;
+                            int pre_page = page > 1 ? page - 1 : page;
+                            int next_page = page < total_pages ? page + 1 : page;
+
+                            string pre_url = "?page=" + pre_page;
+                            string next_url = "?page=" + next_page;
+
+                            <li class="page-item">
+                                <a class="page-link" href="@pre_url">
+                                    Prev
+                                </a>
+                            </li>
+                            for (int i = 1; i <= total_pages; i++)
+                            {
+                                string url_page = "?page=" + i;
+                                if (page == i)
+                                {
+                                    <li class="page-item  active">
+                                        <a class="page-link"
+                                           href="@url_page">@i</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           href="@url_page">@i</a>
+                                    </li>
+                                }
+                            }
+
+                            <li class="page-item"><a class="page-link" href="@next_url">Next</a></li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

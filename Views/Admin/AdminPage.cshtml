@@ -1,21 +1,85 @@
 ﻿<html>
-
 <head>
     <partial name="~/Views/Admin/template/header.cshtml" />
     <link rel="stylesheet" href="~/css/AdminPage.css">
+    <script>
+        
+        window.onload = async function () {
+            var dataPoints = [];
+            await $.getJSON("get-data-chart", function (data) {
+                for (var i = 0; i <= data.length - 1; i++) {
+                    dataPoints.push({ label: data[i].label, y: parseInt(data[i].y) });
+                }
+            });
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light1",
+                title: {
+                    text: "Tình hình bán hàng tháng " + @DateTime.Now.Month
+                },
+                axisY: {
+                    title: "Doanh thu (VND)",
+                    interval: 500000
+                },
+                axisX: {
+                    title: "Loại sản phẩm"
+                },
+                data: [{
+                    type: "column",
+                    dataPoints: dataPoints
+                }]
+            });
+            chart.render();
+        }
+    </script>
     <title>Trang admin</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <partial name="~/Views/Admin/template/navigation.cshtml" />
     <div class="row flex-grow-1 m-0">
-        <partial name="~/Views/Admin/template/sidebar.cshtml"/>
-        
+        <partial name="~/Views/Admin/template/sidebar.cshtml" />
+
         <div class="col-md-10 bg-light">
             <h1>Trang chủ</h1>
             <hr>
+            <div class="row">
+                <div class="col card bg-success m-2">
+                    <div class="card-body text-center ">
+                        <h5 class="font-weight-bold mb-4">ĐÃ BÁN</h5>
+                        <p class="font-weight-bold text-white mb-4">@ViewBag.product_card sản phẩm</p>
+                        <p class="font-weight-bold">Tháng này</p>
+                    </div>
+                </div>
+                <div class="col card bg-warning m-2">
+                    <div class="card-body text-center ">
+                        <h5 class="font-weight-bold mb-4">DOANH THU</h5>
+                        <p class="font-weight-bold text-white mb-4">@string.Format("{0:#,0}", ViewBag.revenue_card) VND</p>
+                        <p class="font-weight-bold">Tháng này</p>
+                    </div>
+                </div>
+                <div class="col card bg-primary m-2">
+                    <div class="card-body text-center ">
+                        <h5 class="font-weight-bold mb-4">KHÁCH HÀNG</h5>
+                        <p class="font-weight-bold text-white mb-4">@ViewBag.customer_card lượt khách</p>
+                        <p class="font-weight-bold">Tháng này</p>
+                    </div>
+                </div>
+                <div class="col card bg-danger m-2">
+                    <div class="card-body text-center ">
+                        <h5 class="font-weight-bold mb-4">ĐƠN HÀNG</h5>
+                        <p class="font-weight-bold text-white mb-4">@ViewBag.order_card đơn hàng</p>
+                        <p class="font-weight-bold">Tháng này</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+            </div>
         </div>
     </div>
 </body>
+
 
 </html>

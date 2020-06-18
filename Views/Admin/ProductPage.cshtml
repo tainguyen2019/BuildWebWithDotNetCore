@@ -1,11 +1,137 @@
-﻿<h1>This is Product Page</h1>
-@foreach (var item in ViewBag.datas)
-{
-    <p>@item.ID</p>
-    <p>@item.TenSP</p>
-    <p>@item.LoaiSP</p>
-    <p>@item.SoLuong</p>
-    <p>@item.Gia</p>
-    <br />
-}
+﻿<html>
+<head>
+    <partial name="~/Views/Admin/template/header.cshtml" />
+    <link rel="stylesheet" href="~/css/AdminPage.css">
+    <title>Trang sản phẩm</title>
+</head>
 
+<body class="d-flex flex-column min-vh-100">
+    <partial name="~/Views/Admin/template/navigation.cshtml" />
+    <div class="row flex-grow-1 m-0">
+        <partial name="~/Views/Admin/template/sidebar.cshtml" />
+
+        <div class="col-md-10 bg-light">
+            <h1>Thông tin sản phẩm</h1>
+            <hr>
+            <form method="get" action="~/admin/products">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label for="category" class="col-md-4">Loại sản phẩm: </label>
+                        <select class="custom-select col-md-5 rounded " id="category" name="category_id">
+                            <option value="0" selected>Tất cả sản phẩm</option>
+                            @foreach (var category in ViewBag.categories)
+                            {
+                                @if (category.category_id == ViewBag.cate)
+                                {
+                                    <option value="@category.category_id" selected>@category.category_name</option>
+                                }
+                                else
+                                {
+                                    <option value="@category.category_id">@category.category_name</option>
+                                }
+                            }
+
+                        </select><br />
+                    </div>
+                    <div class="col-md-5">
+                        <label for="product_name" class="col-md-4">Tên sản phẩm: </label>
+                        <input class="col-md-6 rounded" type="text" name="query" value="@ViewBag.query">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-info"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <a href="~/admin/products/new" class="float-right mb-2 mr-4" title="Thêm mới">
+                <i class="fas fa-plus"> Thêm mới</i>
+            </a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Loại sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var record in ViewBag.datas)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    string url_detail = "products/detail?id=" + record.ID;
+                                    <a href="@url_detail"
+                                       class="text-decoration-none" title="Xem chi tiết">
+                                        @record.TenSP
+                                    </a>
+                                }
+                            </td>
+                            <td>@record.LoaiSP</td>
+                            <td>@record.SoLuong</td>
+                            <td>@string.Format("{0:#,0}", record.Gia) VND</td>
+                            <td>
+                                <a href="~/admin/products/edit?id=@record.ID"
+                                   class="text-decoration-none m-4" title="Sửa">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="~/admin/products/delete?id=@record.ID"
+                                   class="text-decoration-none" title="Xóa" onclick="return confirm('Bạn muốn xóa sản phẩm này ? ')">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="float-right mr-2">
+                <nav>
+                    <ul class="pagination">
+                        @{
+                            int page = ViewBag.page;
+                            int total_pages = ViewBag.total_pages;
+                            int pre_page = page > 1 ? page - 1 : page;
+                            int next_page = page < total_pages ? page + 1 : page;
+
+                            string search = "&category_id=" + ViewBag.cate + "&query=" + ViewBag.query;
+                            string pre_url = "?page=" + pre_page + search;
+                            string next_url = "?page=" + next_page + search;
+
+                            <li class="page-item">
+                                <a class="page-link" href="@pre_url">
+                                    Prev
+                                </a>
+                            </li>
+                            for (int i = 1; i <= total_pages; i++)
+                            {
+                                string url_page = "?page=" + i + search;
+                                if (page == i)
+                                {
+                                    <li class="page-item  active">
+                                        <a class="page-link"
+                                           href="@url_page">@i</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           href="@url_page">@i</a>
+                                    </li>
+                                }
+                            }
+
+                            <li class="page-item"><a class="page-link" href="@next_url">Next</a></li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

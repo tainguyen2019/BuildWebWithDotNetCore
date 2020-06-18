@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Json;
+using BuildWebWithDotNetCore.Models.Admin;
 using BuildWebWithDotNetCore.Models.Database;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace BuildWebWithDotNetCore.Controllers.Home
 {
@@ -14,10 +16,8 @@ namespace BuildWebWithDotNetCore.Controllers.Home
         [Route("home/index")]
         public IActionResult Index()
         {
-            //Test data
-            DatabaseContext databaseContext = new DatabaseContext();
-            ViewBag.data = databaseContext.product;
             return View("~/Views/Home/Index.cshtml");
         }
+
     }
 }

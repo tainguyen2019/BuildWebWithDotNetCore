@@ -9,7 +9,7 @@ namespace BuildWebWithDotNetCore.Models.Database
 {
     public class DatabaseContext : DbContext
     {
-        private const string connectionString = "server=localhost;port=3306;database=website;uid=root;password=";
+        private const string connectionString = "server=localhost;port=3306;database=website;uid=root;password=;Charset=utf8;";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

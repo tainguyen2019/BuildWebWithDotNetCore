@@ -27,7 +27,7 @@ namespace BuildWebWithDotNetCore
             services.AddDistributedMemoryCache();
             services.AddSession(options => {
                 options.Cookie.Name = ".WebTrainingRoom.Session";
-                options.IdleTimeout = TimeSpan.FromMinutes(1);
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
                 options.Cookie.IsEssential = true;
 
             });
