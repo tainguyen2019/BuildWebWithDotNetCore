@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <partial name="~/Views/User/template/top.cshtml" />
+    <title>Chi tiet san pham</title>
+    <link rel="stylesheet" href="~/css/userCSS/detail.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <partial name="~/Views/User/template/navigation.cshtml" />
+    </header>
+    <div class="container-box">
+        <!--
+    <?php if($check_id == true)
+    {?>-->
+        <div class="Product_name">
+            <h2> @ViewBag.product.product_name </h2>
+        </div>
+        
+    <div class="row">
+        <div class="col-4">
+            <img style="    width: 100%; height: 100%;"
+                 src="~/images/@ViewBag.product.image" alt="">
+        </div>
+        <div class="col-3 price-sale">
+            <div class="price">
+                <strong>  @string.Format("{0:#,0}", ViewBag.product.price) VND </strong>
+            </div>
+            <div class="ship">
+                <i class="fa fa-clock-o"></i>
+                <div class="ship-text">NHẬN HÀNG TRONG 1 GIỜ</div>
+            </div>
+            <div class="promotion">
+                <strong>KHUYẾN MÃI</strong>
+                <div class="promo">
+                    <i class="fa fa-check-circle"></i>
+                    <div class="detailPromo">
+                        Cơ hội trúng <b>61 xe Wave</b> và nhiều phần thưỡng hấp dẫn khác
+                    </div>
+                </div>
+            </div>
+            <div class="addtocart">
+                <a class="btn btn-danger btn_add" type="button"
+                   href="#!"> MUA NGAY </a>
+            </div>
+        </div>
+        <div class="col-5 ">
+            <div class="product-info">
+                <h2>THÔNG SỐ KỸ THUẬT</h2>
+                <ul class="info">
+                    <li>
+                        <h6> TÊN SẢN PHẨM </h6>
+                        <p>@ViewBag.product.product_name</p>
+                    </li>
+                    <li>
+                        <h6> MÔ TẢ </h6>
+                        <p>@ViewBag.product.description</p>
+                    </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    </body>
+        <partial name="~/Views/User/template/footer.cshtml" />

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <partial name="~/Views/User/template/top.cshtml" />
+    <title>Login-form</title>
+    <link rel="stylesheet" href="~/css/userCSS/login.css" type="text/css">
+</head>
+
+<body>
+    <div class="wrapped">
+        <partial name="~/Views/User/template/navigation.cshtml" />
+        <div class="form-wrapped">
+            <div class="login-form">
+                <div class="login-form-header">
+                    <img src="https://img.icons8.com/doodle/64/000000/skype.png" class="logo">
+                    <h3 class="title-header">Đăng nhập tài khoản</h3>
+                </div>
+                <div class="login-form-content">
+                    <form action="/login" id="email-sign-in-form" class="login" method="POST">
+                        <div class="form-field-box">
+                            <div class="form-field">
+                                <input id="signin-email" type="text" name="email" placeholder="Địa chỉ email">
+                            </div>
+                        </div>
+                        <div class="form-field-box">
+                            <div class="form-field">
+                                <input type="password" id="signin-password" name="password" placeholder="Mật Khẩu">
+                                <button class="show-password"></button>
+                            </div>
+                        </div>
+
+                        <div class="component-btn-submit form-field">
+                            <input class="btn-submit" type="submit" value="ĐĂNG NHẬP">
+                            <!-- <?php
+                     echo '<label class="text-danger">' . $this->session->flashdata("error") . '</label>';
+                     ?>-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    <partial name="~/Views/User/template/footer.cshtml" />
+    </div>
+
+    <script src="~/js/userJS/login.js"></script>
+</body>
+
+</html>
+

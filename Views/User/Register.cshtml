@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <partial name="~/Views/User/template/top.cshtml" />
+    <title>Login-form</title>
+    <link rel="stylesheet" href="~/css/userCSS/login.css" type="text/css">
+</head>
+
+<body>
+    <div class="wrapped">
+        <partial name="~/Views/User/template/navigation.cshtml" />
+        <div class="form-wrapped">
+                <div class="signup-form">
+                 <div class="signup-header">
+                     <img src="https://img.icons8.com/dusk/64/000000/sign-up.png" class="logo">
+                     <h3 class="title-header">Hoàn thành các trường sau để tạo tài khoản </h3>
+                 </div>
+                 <div class="signup-content">
+                     <form action="/register" id="user-signup-form" class="register" method="POST">
+                         <div class="form-field-box">
+                             <label>Email</label>
+                             <div class="form-field ">
+                                 <input id="signup-email" type="text" name="email" placeholder="Nhập Email">
+                             </div>
+                         </div>
+                         <div class="form-field-box">
+                             <label>Password</label>
+                             <div class="form-field ">
+                                 <input id="signup-password" type="password" name="password" placeholder="Nhập Mật khẩu">
+                             </div>
+                         </div>
+                         <div class="form-field-box">
+                             <label>Họ Tên</label>
+                             <div class="form-field ">
+                                 <input id="signup-name" type="text" name="username" placeholder="Nhập Họ và Tên">
+                             </div>
+                         </div>
+                         <div class="form-field-box">
+                             <label>Số Điện Thoại</label>
+                             <div class="form-field ">
+                                 <input id="signup-phone" type="text" name="phone" placeholder="Nhập Số Điện Thoại">
+                             </div>
+                         </div>
+                         <div class="form-field-box">
+                             <label>Địa Chỉ Giao Hàng</label>
+                             <div class="form-field ">
+                                 <input id="signup-adress" type="text" name="address" placeholder="Nhập Địa Chỉ Giao Hàng">
+                             </div>
+                         </div>
+                         <div class="component-btn-submit form-field">
+                             <input class="btn-submit" type="submit" value="TẠO TÀI KHOẢN">
+                         </div>
+                     </form>
+                 </div>
+             </div>
+        </div>
+    </div>
+    <div>
+        <partial name="~/Views/User/template/footer.cshtml" />
+    </div>
+
+    <script src="~/js/userJS/login.js"></script>
+</body>
+
+</html>
+

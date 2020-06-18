@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <partial name="~/Views/User/template/top.cshtml" />
+    <title>Product</title>
+    <link rel="stylesheet" href="~/css/userCSS/product.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <partial name="~/Views/User/template/navigation.cshtml" />
+    </header>
+    <div id="product-panel">
+        <img src="~/images/image-panel-1.jpeg" alt="panel">
+
+    </div>
+    <div class="khoangtrang"></div>
+    <!--
+    <div class="alert-add-success">
+        <?php
+        if ($this->session->flashdata('add_success')) {
+        echo '<div class="alert alert-success" style="width: 85%;
+           margin: 10px auto;" role="alert">
+            '
+            . '<strong>' . $this->session->flashdata('add_success') . '</strong>' .
+            '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' .
+            '
+        </div>';
+        }
+        ?>
+    </div>
+    -->
+    <div class="khoangtrang"></div>
+    <div class="content">
+        <div class="sidebar float-left">
+            <form action="~/product/showproduct/@ViewBag.category" method="GET">
+                <input type="submit" class="btn btn-info btn-large btn-outline-info btn-submit" value="LỌC"
+                       style="margin-left: 70px;">
+                <div id="accordion">
+                    <div class="card card-size border-none">
+                        <div class="card card-size border-none">
+                            <div class="card-header bg-white border-bottom-none" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-size collapsed" data-toggle="collapse" data-target="#collapseOne"
+                                            aria-expanded="false" aria-controls="collapseOne"
+                                            onclick="function(event) { return event.preventDefault(); }">
+                                        THƯƠNG HIỆU
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body column">
+                                    <ul>
+                                        <li>
+                                            <label class="checkbox-inline">
+                                                <input type="radio" name="brand_id" class="checkbox-form border-primary brand" value="0">
+                                                <span class="checkmark"></span>
+                                                <span class="filter-text brand-text">Chọn Tất Cả</span>
+                                            </label>
+                                        </li>
+                                        @foreach (var brand in ViewBag.brands)
+                                        {
+                                            <li>
+                                                <label class="checkbox-inline">
+                                                    <input type="radio" name="brand_id" class="checkbox-form border-primary brand"
+                                                           value="@brand.brand_id">
+                                                    <span class="checkmark"></span>
+                                                    <p class="filter-text brand-text">@brand.brand_name</p>
+                                                </label>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="main-content  float-right">
+            <div class="list-product">
+                @foreach (var product in ViewBag.datas)
+                {
+                    <div class="card product-card">
+                        <a href="~/product/showproductDetail/@product.product_id ">
+                            <img class="card-img-top bg-light img-product-effect"
+                                 src="~/images/@product.image" alt="">
+                        </a>
+                        <div class="card-body card-body-size" style="position : relative">
+                            <strong class="card-title product-name">@product.product_name</strong>
+                            <p class="card-text product-price">@string.Format("{0:#,0}", product.price) VND</p>
+                            <a class="btn btn-effect btn-outline-primary"
+                               href="#!">
+                                <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 20px"></i>
+                                Mua ngay
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+            <div class="pagination-container">
+                <ul class="pagination">
+                    @{
+                        int page = ViewBag.page;
+                        int total_pages = ViewBag.total_pages;
+                        int pre_page = page > 1 ? page - 1 : page;
+                        int next_page = page < total_pages ? page + 1 : page;
+
+                        string pre_url = "?page=" + pre_page;
+                        string next_url = "?page=" + next_page;
+                        <li class="page-item">
+                            <a href="@pre_url" class="page-link">
+                                Prev
+                            </a>
+                        </li>
+                        for (int i = 1; i <= total_pages; i++)
+                        {
+                            string url_page = "?page=" + i;
+                            if (page == i)
+                            {
+                                <li class="page-item active">
+                                    <a class="page-link" href="@url_page">
+                                        @i
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="@url_page">
+                                        @i
+                                    </a>
+                                </li>
+                            }
+                        }
+                        <li class="page-item">
+                            <a href="@next_url" class="page-link">
+                                Next
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <partial name="~/Views/User/template/footer.cshtml" />
+</body>
+
+</html>

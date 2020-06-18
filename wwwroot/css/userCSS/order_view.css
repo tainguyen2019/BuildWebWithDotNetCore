@@ -1,0 +1,20 @@
+body{
+    background-color : whitesmoke;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+.title{
+    display: inline-block; 
+    margin: 15px 10px 15px;
+    padding: 10px;
+}
+.title span{
+    opacity: 0.5;
+}
+.title .name-user{
+    font-size: 20px;
+    font-weight: 600;
+}
+h3{
+    margin-left: 10px;
+    margin-bottom : 20px !important;
+}

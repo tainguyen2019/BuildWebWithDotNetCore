@@ -17,7 +17,6 @@ namespace BuildWebWithDotNetCore.Models.Home
         public int status { get; set; }
         public string description { get; set; }
 
-
         public Product() { }
 
         public Product(int ProductID, string ProductName, int CategoryID, int BrandID, 
