@@ -1,0 +1,129 @@
+﻿<html>
+<head>
+    <partial name="~/Views/Admin/template/header.cshtml" />
+    <title>Trang đơn hàng</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <partial name="~/Views/Admin/template/navigation.cshtml" />
+    <div class="row flex-grow-1 m-0">
+        <partial name="~/Views/Admin/template/sidebar.cshtml" />
+
+        <div class="col-md-10 bg-light">
+            <h1>Thông tin đơn hàng</h1>
+            <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Ngày tạo</th>
+                        <th>Ngày cập nhật</th>
+                        <th>Địa chỉ giao</th>
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                </thead>
+                <tbody>
+                    @foreach (var record in ViewBag.datas)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    string url_detail = "orders/detail?order_id=" + record.order_id;
+                                    <a href="@url_detail"
+                                       class="text-decoration-none" title="Xem chi tiết">
+                                        @record.order_id
+                                    </a>
+                                }
+                            </td>
+                            <td>@record.create_date</td>
+                            <td>@record.write_date</td>
+                            <td>@record.address</td>
+                            <td>@string.Format("{0:#,0}", record.total) VND</td>
+                            @{
+                                string status = "";
+                                if (record.status == 1)
+                                {
+                                    status = "Đang xử lý";
+                                }
+                                else if (record.status == 2)
+                                {
+                                    status = "Được xác nhận";
+                                }
+                                else
+                                {
+                                    status = "Bị hủy";
+                                }
+                                <td>@status</td>
+                            }
+                            <td>
+                                @if (record.status == 1)
+                                {
+                                    <a href="~/admin/orders/confirm?order_id=@record.order_id"
+                                       class="text-decoration-none m-4" title="Xác nhận" onclick="return confirm('Bạn muốn xác nhận đơn hàng này ? ')">
+                                        <i class="fa fa-check-circle"></i>
+                                    </a>
+                                    <a href="~/admin/orders/cancel?order_id=@record.order_id"
+                                       class="text-decoration-none m-4" title="Hủy bỏ" onclick="return confirm('Bạn có chắc hủy đơn hàng này ? ')">
+                                        <i class="fas fa-window-close"></i>
+                                    </a>
+                                }
+                                <a href="~/admin/orders/detail?order_id=@record.order_id"
+                                   class="text-decoration-none m-4" title="Xem chi tiết">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @*<div class="float-right mr-2">
+                    <nav>
+                        <ul class="pagination">
+                            @{
+                                int page = ViewBag.page;
+                                int total_pages = ViewBag.total_pages;
+                                int pre_page = page > 1 ? page - 1 : page;
+                                int next_page = page < total_pages ? page + 1 : page;
+
+                                string search = "&category_id=" + ViewBag.cate + "&query=" + ViewBag.query;
+                                string pre_url = "?page=" + pre_page + search;
+                                string next_url = "?page=" + next_page + search;
+
+                                <li class="page-item">
+                                    <a class="page-link" href="@pre_url">
+                                        Prev
+                                    </a>
+                                </li>
+                                for (int i = 1; i <= total_pages; i++)
+                                {
+                                    string url_page = "?page=" + i + search;
+                                    if (page == i)
+                                    {
+                                        <li class="page-item  active">
+                                            <a class="page-link"
+                                               href="@url_page">@i</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                               href="@url_page">@i</a>
+                                        </li>
+                                    }
+                                }
+
+                                <li class="page-item"><a class="page-link" href="@next_url">Next</a></li>
+                            }
+                        </ul>
+                    </nav>
+                </div>*@
+
+        </div>
+    </div>
+
+</body>
+
+</html>

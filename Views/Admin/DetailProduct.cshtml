@@ -1,0 +1,36 @@
+﻿<html>
+<head>
+    <partial name="~/Views/Admin/template/header.cshtml" />
+    <title>Trang chi tiết sản phẩm</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <partial name="~/Views/Admin/template/navigation.cshtml" />
+    <div class="row flex-grow-1 m-0">
+        <partial name="~/Views/Admin/template/sidebar.cshtml" />
+
+        <div class="col-md-10 bg-light">
+            <h1>Chi tiết sản phẩm</h1>
+            <hr>
+
+            <h3 class="mb-4 p-2">@ViewBag.product.product_name</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    @{
+                            string image = "~/images/" + ViewBag.product.image;
+                        <img src="@image" asp-append-version="true" class="m-2 p-2" style="display: inline-block;
+                                                                                            width: inherit;height: auto;">
+                    <br>
+                     }
+                </div>
+                <div class="col-md-6">
+                    <i class="fas fa-check m-2 p-2"></i>Giá bán : @string.Format("{0:#,0}", ViewBag.product.price) VND <br>
+                    <i class="fas fa-check m-2 p-2"></i> Thương hiệu : @ViewBag.brand_name <br>
+                    <i class="fas fa-check m-2 p-2"></i> Mô tả : @ViewBag.product.description<br>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

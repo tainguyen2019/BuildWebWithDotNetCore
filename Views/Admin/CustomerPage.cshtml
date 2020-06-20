@@ -1,0 +1,91 @@
+﻿<html>
+<head>
+    <partial name="~/Views/Admin/template/header.cshtml" />
+    <title>Trang khách hàng</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <partial name="~/Views/Admin/template/navigation.cshtml" />
+    <div class="row flex-grow-1 m-0">
+        <partial name="~/Views/Admin/template/sidebar.cshtml" />
+        <div class="col-md-10 bg-light">
+            <h1>Thông tin khách hàng</h1>
+            <hr>
+            <form method="get" action="~/admin/customers">
+                <input class="col-md-4 rounded" type="text" name="query" value="@ViewBag.query">
+                <button type="submit" class="btn btn-info"><i class="fas fa-search"></i></button>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tên khách hàng</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Email</th>
+                        <th>Mật khẩu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var record in ViewBag.datas)
+                    {
+                        <tr>
+                            <td>@record.Name</td>
+                            <td>@record.Phone</td>
+                            <td>@record.Address</td>
+                            <td>@record.Email</td>
+                            <td>@record.Password</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="float-right mr-2">
+                <nav>
+                    <ul class="pagination">
+                        @{
+                            string query = ViewBag.query;
+                            int page = ViewBag.page;
+                            int total_pages = ViewBag.total_pages;
+                            int pre_page = page > 1 ? page - 1 : page;
+                            int next_page = page < total_pages ? page + 1 : page;
+
+                            string search = "&query=" + query;
+                            string pre_url = "?page=" + pre_page + search;
+                            string next_url = "?page=" + next_page + search;
+
+                            <li class="page-item">
+                                <a class="page-link" href="@pre_url">
+                                    Prev
+                                </a>
+                            </li>
+                            for (int i = 1; i <= total_pages; i++)
+                            {
+                                string url_page = "?page=" + i + search;
+                                if (page == i)
+                                {
+                                    <li class="page-item  active">
+                                        <a class="page-link"
+                                           href="@url_page">@i</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           href="@url_page">@i</a>
+                                    </li>
+                                }
+                            }
+
+                            <li class="page-item"><a class="page-link" href="@next_url">Next</a></li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

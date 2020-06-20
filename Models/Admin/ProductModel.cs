@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BuildWebWithDotNetCore.Models.Database;
 using MySql.Data.MySqlClient;
 
 namespace BuildWebWithDotNetCore.Models.Home
@@ -53,5 +54,37 @@ namespace BuildWebWithDotNetCore.Models.Home
             get { return gia; }
             set { gia = value; }
         }
+
+        public List<ProductModel> getProducts(int category_id, string query)
+        {
+            DatabaseContext databaseContext = new DatabaseContext();
+            List<Product> products = databaseContext.product.ToList();
+            List<Category> categories = databaseContext.category.ToList();
+
+            if (category_id != 0)
+            {
+                products = products.Where(product => product.category_id == category_id).ToList();
+            }
+
+            if (query.Length > 0)
+            {
+                products = products.Where(product => product.product_name.Contains(query)).ToList();
+            }
+
+            List<ProductModel> result = (from product in products
+                                         join category in categories
+                                         on product.category_id equals category.category_id
+                                         orderby product.product_id descending
+                                         select new ProductModel
+                                         (
+                                             product.product_id,
+                                             product.product_name,
+                                             category.category_name,
+                                             product.quantity,
+                                             product.price
+                                         )).ToList();
+            return result;
+        }
+
     }
 }

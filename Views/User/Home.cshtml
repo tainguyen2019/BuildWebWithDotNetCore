@@ -46,7 +46,7 @@
         <div class="list-ultility container-fluid">
             <div class="container flex-column">
                 <div class="title flex-center">
-                    <h2 class="main-title">
+                    <h2 class="main-title row">
                         WEBSITE CHUYÊN VỀ CÁC PHỤ KIỆN ĐIỆN TỬ
                     </h2>
                     <h5 class="sub-title ">
@@ -129,7 +129,7 @@
                                     <div class="card-body card-body-size" style="position : relative">
                                         <p class="card-title product-name">@headphone.product_name</p>
                                         <p class="card-text product-price">
-                                            @headphone.price
+                                            @string.Format("{0:#,0}", headphone.price) VND
                                         </p>
                                         <a class="btn btn-effect btn-outline-dark"
                                            href="#1!">
@@ -174,9 +174,9 @@
                                         <img class="sale-img" src="https://img.icons8.com/color/64/000000/sale--v2.png">
                                     </a>
                                     <div class="card-body card-body-size" style="position : relative">
-                                        <p class="card-title product-name">@mouse.product_name></p>
+                                        <p class="card-title product-name">@mouse.product_name</p>
                                         <p class="card-text product-price">
-                                            @mouse.price
+                                            @string.Format("{0:#,0}", mouse.price) VND
                                         </p>
                                         <a class="btn btn-effect btn-outline-dark"
                                            href="#1!">
@@ -219,9 +219,9 @@
                                         <img class="sale-img" src="https://img.icons8.com/color/64/000000/sale--v2.png">
                                     </a>
                                     <div class="card-body card-body-size" style="position : relative">
-                                        <p class="card-title product-name">@keyboard.product_name></p>
+                                        <p class="card-title product-name">@keyboard.product_name</p>
                                         <p class="card-text product-price">
-                                            @keyboard.price
+                                            @string.Format("{0:#,0}", keyboard.price) VND
                                         </p>
                                         <a class="btn btn-effect btn-outline-dark"
                                            href="#1!">
@@ -265,9 +265,9 @@
                                         <img class="sale-img" src="https://img.icons8.com/color/64/000000/sale--v2.png">
                                     </a>
                                     <div class="card-body card-body-size" style="position : relative">
-                                        <p class="card-title product-name">@speaker.product_name></p>
+                                        <p class="card-title product-name">@speaker.product_name</p>
                                         <p class="card-text product-price">
-                                            @speaker.price
+                                            @string.Format("{0:#,0}", speaker.price) VND
                                         </p>
                                         <a class="btn btn-effect btn-outline-dark"
                                            href="#1!">
@@ -287,25 +287,25 @@
     <footer>
         <div class="container-fluid">
             <div class="row bg-white ">
-                <div class="col-md-4 text-dark">
+                <div class="col text-dark">
                     <h5 class="display5">
-                        Đồ án môn Phát Triển Ứng Dụng Web
+                        Đồ án môn Xây dựng HTTT trên các Framework
                     </h5>
                     <hr class="bg-dark">
                     <p>
                         Tên đề tài : Web bán thiết bị điện tử.
                     </p>
                     <p>
-                        Số lượng thành viên nhóm : 2
+                        Số lượng thành viên nhóm : 3
                     </p>
                     <p>
-                        Giáo viên hướng dẫn : Thầy Vũ Minh Sang
+                        Giáo viên hướng dẫn : Thầy Mai Xuân Hùng
                     </p>
                     <img src="https://img.icons8.com/doodle/48/000000/facebook-new.png">
                     <img src="https://img.icons8.com/dusk/48/000000/instagram-new.png">
                     <img src="https://img.icons8.com/dusk/48/000000/email.png">
                 </div>
-                <div class="col-md-4">
+                <div class="col">
                     <hr class="bg-dark">
                     <h6 class="display6">
                         Thành viên 1
@@ -321,7 +321,7 @@
                         Nhóm Trưởng
                     </p>
                 </div>
-                <div class="col-md-4">
+                <div class="col">
                     <hr class="bg-dark">
                     <h6 class="display6">
                         Thành viên 2
@@ -332,6 +332,19 @@
                     </p>
                     <p>
                         MSSV : 17520999
+                    </p>
+                </div>
+                <div class="col">
+                    <hr class="bg-dark">
+                    <h6 class="display6">
+                        Thành viên 3
+                    </h6>
+                    <hr class="bg-dark">
+                    <p>
+                        Tên : Bùi Thái Hoàng
+                    </p>
+                    <p>
+                        MSSV : 17520502
                     </p>
                 </div>
             </div>

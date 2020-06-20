@@ -26,7 +26,7 @@
         </div>
         <div class="col-3 price-sale">
             <div class="price">
-                <strong> @ViewBag.product.price VND </strong>
+                <strong>  @string.Format("{0:#,0}", ViewBag.product.price) VND </strong>
             </div>
             <div class="ship">
                 <i class="fa fa-clock-o"></i>
@@ -62,11 +62,6 @@
             </div>
         </div>
     </div>
-        <!--
-    <?php } else {?>
-    <h1>KHÔNG TÌM THẤY SẢN PHẨM </h1>
-    <?php }?>
-        -->
     </div>
     </body>
         <partial name="~/Views/User/template/footer.cshtml" />
