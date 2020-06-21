@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trang xem đơn hàng</title>
+    <link rel="stylesheet" href="~/css/userCSS/order_view.css"
+          type="text/css">
+    <link rel="stylesheet" href="~/css/userCSS/aos.css" type="text/css">
+    <link rel="stylesheet" href="~/css/userCSS/template.css"
+          type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+          type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <partial name="./template/navigation.cshtml" />
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="title">
+            <h2> CHI TIẾT ĐƠN HÀNG</h2>
+        </div>
+        <hr>
+        <div>
+            <h4> Đơn hàng số @ViewBag.sale_order.order_id</h4>
+        </div>
+        <div>
+            <p>Ngày tạo :  @ViewBag.sale_order.create_date</p><br>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá bán</th>
+                    <th>Giảm giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detail in ViewBag.sale_order_lines)
+                {
+                    <tr>
+                        <td>@detail.ProductName</td>
+                        <td>@detail.Quantity</td>
+                        <td>@string.Format("{0:#,0}", detail.Price) VND</td>
+                        <td>@(detail.Discount * 100) %</td>
+                        <td>@string.Format("{0:#,0}", detail.Amount) VND</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h5 class="float-right m-5">Tổng tiền:  @string.Format("{0:#,0}", ViewBag.sale_order.total) VND</h5><br>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="~/js/userJS/aos.js"></script>
+    <script src="~/js/userJS/template.js"></script>
+    <script type="text/javascript"></script>
+</body>
+</html>
