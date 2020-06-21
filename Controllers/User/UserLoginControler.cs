@@ -17,12 +17,9 @@ namespace BuildWebWithDotNetCore.Controllers.User
         [Route("/login/index")]
         public IActionResult Index()
         {
-            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-            if (cart != null)
-            {
+
                 return View("~/Views/User/Order_Login.cshtml");
-            }
-            return View("~/Views/User/Login.cshtml");
+           
         }
 
         [Route("/logout")]
