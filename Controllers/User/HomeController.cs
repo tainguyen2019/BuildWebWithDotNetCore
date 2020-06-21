@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BuildWebWithDotNetCore.Controllers.Home
 {
-    
     public class HomeController : Controller
     {
         [Route("")]

@@ -1,4 +1,5 @@
-﻿
+﻿@{ var isLogged = @Context.Session.GetString("isUserLogin") == "ok" ? 1 : 0; }
+
 <div class="global-nav">
     <div class="nav-container">
         <div class="left">
@@ -23,26 +24,28 @@
                         TÀI KHOẢN
                     </a>
                     <ul class="sub-list">
-                        
+                        @if (isLogged == 0)
+                        {
+                            <li class="sub-list-item">
+                                <a href="~/login" class="items">ĐĂNG NHẬP</a>
+                            </li>
+                            <!--li class="sub-list-item">
+            <a href="~/register" class="items">TẠO TÀI KHOẢN</a>
+        </!--li-->
+              }
+
                         <li class="sub-list-item">
-                            <a href="~/login" class="items">ĐĂNG NHẬP</a>
-                        </li>
-                        <li class="sub-list-item">
-                            <a href="~/register" class="items">TẠO TÀI KHOẢN</a>
-                        </li>
-                        
-                        <li class="sub-list-item">
-                            <a href="!#" class="items">XEM ĐƠN HÀNG</a>
+                            <a href="~/order/view" class="items">XEM ĐƠN HÀNG</a>
                         </li>
                         <li class="sub-list-item">
                             <a href="~/logout" class="items">ĐĂNG XUẤT</a>
                         </li>
-                       
+
                     </ul>
                 </li>
                 <li class="nav-item">
                     <!--điều hướng đến trang giỏ hàng-->
-                    <a href="!#" class="nav-link login">
+                    <a href="~/cart" class="nav-link login">
                         <img src="https://img.icons8.com/cotton/32/000000/shopping-cart--v1.png">
                         GIỎ HÀNG
                     </a>

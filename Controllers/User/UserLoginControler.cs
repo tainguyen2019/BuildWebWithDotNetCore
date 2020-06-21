@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BuildWebWithDotNetCore.Helpers;
 
 namespace BuildWebWithDotNetCore.Controllers.User
 {
@@ -16,6 +17,11 @@ namespace BuildWebWithDotNetCore.Controllers.User
         [Route("/login/index")]
         public IActionResult Index()
         {
+            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            if (cart != null)
+            {
+                return View("~/Views/User/Order_Login.cshtml");
+            }
             return View("~/Views/User/Login.cshtml");
         }
 
@@ -23,6 +29,7 @@ namespace BuildWebWithDotNetCore.Controllers.User
         public IActionResult logout()
         {
             HttpContext.Session.Remove("isUserLogin");
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "customer", null);
             return Redirect("login");
         }
 
@@ -37,9 +44,35 @@ namespace BuildWebWithDotNetCore.Controllers.User
                                                 && account.role == 2)
                         .ToArray();
 
+
+            
+
+
             if (result.Length > 0)
             {
-                HttpContext.Session.SetString("isUserLogin", "ok");
+                var customerData = databaseContext.customer;
+
+                var cus = customerData.Where(cus => cus.account_id == result[0].account_id
+                                                )
+                        .ToArray();
+                if(cus.Length > 0)
+                {
+                    HttpContext.Session.SetString("isUserLogin", "ok");
+
+                    SessionHelper.SetObjectAsJson(HttpContext.Session, "customer", new CustomerSession {
+                        account_id = result[0].account_id,
+                        email = result[0].email,
+                        name = cus[0].customer_name,
+                        phone = cus[0].phone,
+                        address = cus[0].address
+                    });
+
+                }
+                var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+                if (cart != null)
+                {
+                    return Redirect("~/cart");
+                }
                 return Redirect("~/");
             }
             else
