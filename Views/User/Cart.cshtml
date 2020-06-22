@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trang xem đơn hàng</title>
+    <partial name="~/Views/User/template/top.cshtml" />
+
+    <link rel="stylesheet" href="~/css/userCss/order_view.css" type="text/css">
+    <link rel="stylesheet" href="~/css/userCss/cart.css" type="text/css">
+    <link rel="stylesheet" href="~/css/userCss/aos.css" type="text/css">
+    <link rel="stylesheet" href="~/css/userCss/template.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <partial name="./template/navigation.cshtml" />
+        </div>
+    </header>
+
+
+    @{ var totalProduct = ViewBag.cart != null ? ViewBag.cart.Count : 0; }
+
+    <div id="notice">
+    </div>
+    <div class="cart-container row" style="background: whitesmoke">
+        <div class="col-xs-12">
+            <h5 class="lbl-shopping-cart">
+                Giỏ hàng
+                <span>@totalProduct sản phẩm</span>
+            </h5>
+        </div>
+        <div class="col-xs-8 cart-col-1">
+            <form id="shopping cart">
+                @if (ViewBag.cart != null)
+                {
+                    @foreach (var item in ViewBag.cart)
+                    {
+                        <div class="row shopping-cart-item">
+                            <div class="col-xs-3 img-thumbnail-custom">
+                                <p class="image">
+                                    <img class="img-responsive" src="~/images/@item.Product.image" alt="">
+                                </p>
+                            </div>
+                            <div class="col-right">
+                                <div class="box-info-product">
+                                    <input type="hidden" class="hidden-quantity" value="1">
+                                    <div class="badge-cart-a">
+                                        <p class="name">
+                                            <a href="#">@item.Product.product_name</a>
+                                        </p>
+                                    </div>
+                                    <p class="action" style="margin-top: 31px">
+                                        <a class="btn btn-danger btn-item-del" asp-controller="cart" asp-action="remove" asp-route-id="@item.Product.product_id" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này ?')">
+                                            <i class="fa fa-trash-o fa-1x" aria-hidden="true"></i>
+                                            Remove
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="badge-cart-a">
+                                    <div class="box-size">
+                                        <p>Giá sản phẩm : </p>
+                                        <p class="price">@string.Format("{0:#,0}", @item.Product.price) VND</p>
+                                        <div id="@item.Product.product_id">
+                                            @if (item.discount > 0)
+                                            {
+                                                <p class="font-weight-bold"> @(Math.Round(item.discount, 2) * 100) %</p>
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="badge-cart-a-link"></div>
+                                <div class="quantity-block">
+                                    <div style="display: flex; justify-content: space-around; align-items: center;">
+                                        <a class="btn btn-danger btn-item-del" asp-controller="cart" asp-action="sub" asp-route-id="@item.Product.product_id" onclick="return true">
+                                            -
+                                        </a>
+                                        <span style="margin-left: 5px; margin-right: 5px;">@item.Quantity</span>
+                                        <a class="btn btn-danger btn-item-del" asp-controller="cart" asp-action="add" asp-route-id="@item.Product.product_id" onclick="return true">
+                                            +
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>Không có sản phẩm nào trong giỏ hàng !</p>
+                }
+            </form>
+        </div>
+        @if (ViewBag.totalPrice != 0)
+        {
+            <div class="col-xs-4 cart-col-2">
+                <div id="right-affix" class="affix-top">
+                    <div class="each-row">
+                        <div class="box-style fee">
+                            <p class="list-info-price">
+                                <span>Tạm tính: </span>
+                                <strong id="amount1">@string.Format("{0:#,0}", @ViewBag.totalPrice) VND</strong>
+                            </p>
+                        </div>
+                        <div class="box-style fee">
+                            <div class="total2 clearfix">
+                                <span class="text-label">Thành tiền: </span>
+                                <div class="amount">
+                                    <div id="amount2">
+                                        <strong>@string.Format("{0:#,0}", @ViewBag.totalPrice) VND</strong>
+                                    </div>
+                                    <p class="text-right">
+                                        <small>(Đã bao gồm VAT nếu có)</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a id="result" href="~/order" type="button" class="btn btn-large btn-block btn-danger btn-checkout text-white">
+                            Tiến hành đặt hàng
+                        </a>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel-group coupon">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">Mã giảm giá / Quà tặng</h4>
+                                    </div>
+                                    <div id="collapseOne3" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="input-group">
+                                                <input id="coupon_code" class="form-control" name="coupon_code" type="text" placeholder="Nhập ở đây..">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default btn-coupon" type="button" id="SubmitCode">Đồng ý</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/js/userJS/aos.js"></script>
+    <script src="~/js/userJS/template.js"></script>
+    <script type="text/javascript"></script>
+
+    <script>
+$("#coupon_code").change(function () {
+            $("#SubmitCode").click(function () {
+                    var code = $('#coupon_code').val();
+                $.ajax({
+                    url: "cart/discount/" + code,
+                    type: "get",
+                    dataType: "text",
+                    success: function (result) {
+                            var item = JSON.parse(result)
+                        console.log("parase: ",item)
+                        if (item.quantity==0) {
+                            $("#notice").html(`<div class="alert alert-danger alert-dismissible">
+                                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                                            <strong>Mã giảm giá không hợp lệ !</strong>
+                                        </div>`);
+                        } else {
+                            var total = +$('#amount1').text().replace(" VND", "")
+                            total = Math.round(total- item.product.price * item.discount)
+
+                            if (item.discount > 0) {
+                                $("#notice").html(`<div class="alert alert-success alert-dismissible">
+                                                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                                        <strong>Mã giảm giá đã áp dụng thành công !</strong>
+                                      </div>`);
+                            } else {
+                                location.reload()
+                            }
+                        }
+
+
+                    }
+                });
+            });
+        });</script>
+</body>
+
+</html>

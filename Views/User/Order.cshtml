@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <partial name="~/Views/User/template/top.cshtml" />
+    <title>Order detail</title>
+    <link rel="stylesheet" href="~/css/userCSS/order.css" type="text/css">
+</head>
+
+
+<body>
+    <header>
+        <div class="nav">
+            <partial name="~/Views/User/template/navigation.cshtml" />
+        </div>
+    </header>
+    <div class="row box col-12">
+        <div class="col-8 cart-container">
+            <div class="cart-header">
+                <label> Chi tiết hóa đơn</label>
+                <a href="~/cart" class="btn btn-warning btn-sm btn-update"> Sửa </a>
+            </div>
+            <div id="shopping-cart">
+                @foreach (var item in ViewBag.cart)
+                {
+                    <div class="row shopping-cart-item">
+                        <div class="col-xs-3 img-thumbnail-custom">
+                            <p class="image">
+                                <img class="img-responsive" src="~/images/@item.Product.image" alt="">
+                            </p>
+                        </div>
+                        <div class="col-right">
+                            <div class="box-info-product">
+                                <div class="box-size">
+                                    <p class="name">
+                                        <a href="#">@item.Product.product_name</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="box-size">
+                                <p>Giá : </p>
+                                <p class="price">@item.Product.price VND</p>
+                            </div>
+                            @if (item.discount > 0)
+                            {
+                                <div class="box-size">
+                                    <p>Giảm giá : </p>
+                                    <p class="font-weight-bold">@(Math.Round(item.discount,2)*100) %</p>
+                                </div>
+                            }
+                            <div class="box-size">
+                                <p>Số lượng : </p>
+                                <p class="quantity">@item.Quantity</p>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="order_total-box">
+                <div class="order_total">
+                    <span>TỔNG TIỀN : </span>
+                    <span class="font-weight-bold" style="font-size: 20px">@string.Format("{0:#,0}", @ViewBag.totalPrice) VND</span>
+                </div>
+            </div>
+            <div class="btn-order-box">
+                <a href="~/order/save" type="button" class="btn btn-large btn-danger btn-order">ĐẶT MUA</a>
+            </div>
+            <!--?php
+    echo '<label class="text-danger">' . $this->session->flashdata("error") . '</label>';
+    ?>-->
+        </div>
+        <div class="col-4">
+            <div class="address-box">
+                <div class="address-header">
+                    <label> Địa chỉ giao hàng</label>
+                </div>
+                <div class="address-content">
+                    <span class="name">Họ tên: @ViewBag.customer.name</span>
+                    <p class="address">Địa chỉ: @ViewBag.customer.address</p>
+                    <span class="sdt">Số điện thoại: @ViewBag.customer.phone</span>
+                </div>
+            </div>
+            <div class="payment-methods">
+                <label class="text">Chọn phương thức thanh toán</label>
+                <div class="form-check" style="margin :13px 0 ;">
+                    <input class="form-check-input" type="radio" name="method" id="cash" value="option1" checked>
+                    <label class="form-check-label" for="cash">
+                        Thanh toán tiền mặt sau khi nhận hàng
+                    </label>
+                </div>
+                <div class="form-check" style="margin :13px 0;">
+                    <input class="form-check-input" type="radio" name="method" id="online" value="option2">
+                    <label class="form-check-label" for="online">
+                        Thanh toán bằng ví MOMO
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
