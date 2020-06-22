@@ -166,12 +166,13 @@ namespace BuildWebWithDotNetCore.Controllers.User
 
             MimeMessage message = new MimeMessage();
 
-            MailboxAddress from = new MailboxAddress(customer.name,
-            customer.email);
+            MailboxAddress from = new MailboxAddress("User",
+            "17520545@gm.uit.edu.vn");
+
             message.From.Add(from);
 
-            MailboxAddress to = new MailboxAddress("User",
-            "hoang21099@gmail.com");
+            MailboxAddress to = new MailboxAddress(customer.name,
+            customer.email);
             message.To.Add(to);
 
             message.Subject = "This is email subject";
@@ -186,7 +187,7 @@ namespace BuildWebWithDotNetCore.Controllers.User
 
             SmtpClient client = new SmtpClient();
             client.Connect("smtp.gmail.com", 587, false);
-            client.Authenticate("17520502@gm.uit.edu.vn", "DvhP@ssword1");
+            client.Authenticate("17520545@gm.uit.edu.vn", "1877499254");
 
 
             client.Send(message);

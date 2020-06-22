@@ -46,16 +46,16 @@ input[type=checkbox]::selection {
     font-size: 1.5rem;
 }
 .content{
-    height: 1500px;
+   width : 100%
 }
 .sidebar{
-    width: 350px;
+    width: 22%;
     height: auto;
     position: sticky;
     top: 0;
 }
 .main-content{
-    width: 950px;
+    width: 75%;
     height: auto;
     margin: 0 20px;
 }
@@ -169,12 +169,13 @@ input[type=checkbox]::selection {
 .card-body-size{
     height : 180px;
 }
-.btn-submit{
+.btn-submit {
     width: 200px;
     height: 46px;
     margin-bottom: 10px;
     font-size: 22px;
-    font-weight : bold
+    font-weight: bold;
+    color: #fff;
 }
 .btn-effect{
     box-shadow: 0 0 14px rgb(0, 123, 255, 0.4);
@@ -187,7 +188,7 @@ label .filter-text{
 
 
 .img-product-effect{
-    transform : translateY(-10px);
+    transform : translateY(10px);
     transition : transform 250ms ease-in;
 }
 .product-card:hover .img-product-effect
