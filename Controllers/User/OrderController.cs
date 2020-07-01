@@ -120,7 +120,7 @@ namespace BuildWebWithDotNetCore.Controllers.User
 
                 foreach (var item in cart)
                 {
-                    var amount = Math.Round(item.Quantity * item.Product.price - item.discount * 100);
+                    var amount = Math.Round(item.Quantity * item.Product.price - item.discount * item.Product.price);
                     databaseContextB.sale_order_line.Add(new SaleOrderLine(latestOrderId, item.Product.product_id, item.Quantity, item.Product.price, Convert.ToSingle(item.discount), amount));
                 }
                 databaseContextB.SaveChanges();
