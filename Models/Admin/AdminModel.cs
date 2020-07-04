@@ -43,11 +43,11 @@ namespace BuildWebWithDotNetCore.Models.Admin
                                     join sol in sale_order_line on so.order_id equals sol.order_id
                                     join p in product on sol.product_id equals p.product_id
                                     join c in category on p.category_id equals c.category_id
-                                    group new { c.category_name, sol } by new { c.category_name, sol } into data
+                                    group new { c.category_name, sol.amount } by new { c.category_name, sol.amount } into data
                                     select new AdminModel
                                     (
                                         data.Key.category_name,
-                                        data.Sum(data => data.sol.amount)
+                                        data.Sum(data => data.amount)
                                     )).ToList();
             List<AdminModel> result = new List<AdminModel>();
             foreach(var c in category)

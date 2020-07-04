@@ -58,9 +58,6 @@ ul, li, p {
 .nav-item {
     position: relative;
     width: 200px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
     transition: all 0.01s ease-in-out;
 }
 
@@ -87,98 +84,6 @@ ul, li, p {
     color: #343a40 !important;
 }
 
-/*category-list*/
-
-.hamburger {
-    position: absolute !important;
-    width: 100%;
-    height: auto;
-    z-index: 2;
-    background-color: transparent;
-}
-
-.hamburger-btn {
-    color: #007bff !important;
-    border-color: #007bff !important;
-    background-color: transparent;
-    background-image: none;
-}
-
-.hamburger-btn:hover {
-    background-color: #007bff;
-    color: rgba(255, 255, 255, .9) !important;
-}
-
-.form-search {
-    display: flex;
-    align-items: center;
-    margin-left: 40px;
-}
-
-.search-text {
-    height: 51px;
-    width: 350px;
-    border: 1px solid;
-    border-radius: 4px;
-}
-
-#list-category {
-    margin-top: 3px;
-    background-color: whitesmoke;
-}
-
-#list-category a {
-    text-align: center;
-    display: block;
-    padding: 20px 32px;
-    text-decoration: none;
-}
-
-#list-category .category-img {
-    display: block;
-    height: 60px;
-    position: relative;
-    opacity: 0.7;
-    transition: opacity .2s linear;
-    overflow: visible;
-}
-
-#list-category .category-img:hover {
-    opacity: 1;
-}
-
-#list-category .category-img img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    display: inline-block;
-    transform: translate(-3px, 3px);
-    transition: all 0.2s ease-in;
-}
-
-#list-category .category-name {
-    font-size: 16px;
-    margin-top: 20px;
-    display: block;
-    font-weight: 600;
-    position: relative;
-    color: black
-}
-
-.show_total_items {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background-color: #007bff;
-    border-radius: 50%;
-    font-size: 16px;
-    padding: 2px;
-    font-weight: bold;
-    color: whitesmoke;
-}
-
 /*sub-list*/
 
 .nav-item:hover .sub-list {
@@ -191,9 +96,6 @@ ul, li, p {
     list-style: none;
     background-color: #2d8af0;
     width: 200px;
-    top: 55px;
-    left: 1px;
-    border-radius: 4px;
     display: none;
 }
 
@@ -223,4 +125,95 @@ ul, li, p {
 
 .sub-list-item:hover .items {
     color: #fff !important;
+}
+/*category-list*/
+
+.hamburger {
+    position: absolute !important;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+    background-color: transparent;
+}
+
+.hamburger-btn {
+    color: #007bff !important;
+    border-color: #007bff !important;
+    background-color: transparent;
+    background-image: none;
+}
+
+    .hamburger-btn:hover {
+        background-color: #007bff;
+        color: rgba(255, 255, 255, .9) !important;
+    }
+
+.form-search {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.search-text {
+    height: 51px;
+    width: 350px;
+    border: 1px solid;
+    border-radius: 4px;
+}
+
+#list-category {
+    margin-top: 3px;
+    background-color: whitesmoke;
+}
+
+    #list-category a {
+        text-align: center;
+        display: block;
+        padding: 20px 32px;
+        text-decoration: none;
+    }
+
+    #list-category .category-img {
+        display: block;
+        height: 60px;
+        position: relative;
+        opacity: 0.7;
+        transition: opacity .2s linear;
+        overflow: visible;
+    }
+
+        #list-category .category-img:hover {
+            opacity: 1;
+        }
+
+        #list-category .category-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: inline-block;
+            transform: translate(-3px, 3px);
+            transition: all 0.2s ease-in;
+        }
+
+    #list-category .category-name {
+        font-size: 16px;
+        margin-top: 20px;
+        display: block;
+        font-weight: 600;
+        position: relative;
+        color: black
+    }
+
+.show_total_items {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #007bff;
+    border-radius: 50%;
+    font-size: 16px;
+    padding: 2px;
+    font-weight: bold;
+    color: whitesmoke;
 }

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trang xem đơn hàng</title>
+    <link rel="stylesheet" href="~/css/userCSS/order_view.css" type="text/css">
+    <link rel="stylesheet" href="~/css/userCSS/aos.css" type="text/css">
+    <link rel="stylesheet" href="~/css/userCSS/template.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <partial name="~/Views/User/template/navigation.cshtml" />
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="title">
+            <i class="fas fa-users" style="font-size : 24px"></i>
+            <span><small>Tài khoản của</small></span>
+            <p class="name-user">@ViewBag.customer.name</p>
+        </div>
+        <h3> ĐƠN HÀNG CỦA TÔI</h3>
+        <div class="order-table">
+            <table class="table table-striped ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Mã đơn hàng</th>
+                        <th scope="col">Ngày mua</th>
+                        <th scope="col">Địa chỉ</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Trạng thái đơn hàng</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var record in ViewBag.listOrder)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    string url_detail = "orders/detail?order_id=" + record.order_id;
+                                    <a href="@url_detail"
+                                       class="text-decoration-none" title="Xem chi tiết">
+                                        @record.order_id
+                                    </a>
+                                }
+                            </td>
+                            <td>@record.create_date</td>
+                            <td>@record.write_date</td>
+                            <td>@record.address</td>
+                            <td>@string.Format("{0:#,0}", record.total) VND</td>
+                            @{
+                                string status = "";
+                                if (record.status == 1)
+                                {
+                                    status = "Đang xử lý";
+                                }
+                                else if (record.status == 2)
+                                {
+                                    status = "Được xác nhận";
+                                }
+                                else
+                                {
+                                    status = "Bị hủy";
+                                }
+                                <td>@status</td>
+                            }
+                            <td>
+                                @if (record.status == 1)
+                                {
+                           
+                                    <a href="~/order/cancel?order_id=@record.order_id"
+                                       class="text-decoration-none m-4" title="Hủy bỏ" onclick="return confirm('Bạn có chắc hủy đơn hàng này ? ')">
+                                        <i class="fas fa-window-close"></i>
+                                    </a>
+                                }
+                                <a href="~/order/detail?order_id=@record.order_id"
+                                   class="text-decoration-none m-4" title="Xem chi tiết">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="~/js/aos.js"></script>
+    <script src="~/js/template.js"></script>
+    <script type="text/javascript"></script>
+</body>
+
+</html>

@@ -42,11 +42,11 @@
                         <div class="card card-size border-none">
                             <div class="card-header bg-white border-bottom-none" id="headingOne">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-size collapsed" data-toggle="collapse" data-target="#collapseOne"
+                                    <p class="btn btn-size collapsed" data-toggle="collapse" data-target="#collapseOne"
                                             aria-expanded="false" aria-controls="collapseOne"
                                             onclick="function(event) { return event.preventDefault(); }">
                                         THƯƠNG HIỆU
-                                    </button>
+                                    </p>
                                 </h5>
                             </div>
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
@@ -93,7 +93,7 @@
                             <strong class="card-title product-name">@product.product_name</strong>
                             <p class="card-text product-price">@string.Format("{0:#,0}", product.price) VND</p>
                             <a class="btn btn-effect btn-outline-primary"
-                               href="#!">
+                               href="~/cart/buy/@product.product_id">
                                 <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 20px"></i>
                                 Mua ngay
                             </a>
