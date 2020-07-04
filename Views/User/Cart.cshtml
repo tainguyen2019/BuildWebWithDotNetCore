@@ -170,7 +170,7 @@
     <script type="text/javascript"></script>
 
     <script>
-$("#coupon_code").change(function () {
+        $("#coupon_code").change(function () {
             $("#SubmitCode").click(function () {
                     var code = $('#coupon_code').val();
                 $.ajax({
@@ -178,28 +178,26 @@ $("#coupon_code").change(function () {
                     type: "get",
                     dataType: "text",
                     success: function (result) {
-                            var item = JSON.parse(result)
-                        console.log("parase: ",item)
-                        if (item.quantity==0) {
+                        var { item, totalPrice} = JSON.parse(result)
+                        if (!item) {
                             $("#notice").html(`<div class="alert alert-danger alert-dismissible">
                                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                                             <strong>Mã giảm giá không hợp lệ !</strong>
                                         </div>`);
                         } else {
-                            var total = +$('#amount1').text().replace(" VND", "")
-                            total = Math.round(total- item.product.price * item.discount)
-
+                            var formatNumber = Number(totalPrice)
+                                .toFixed(2)
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
                             if (item.discount > 0) {
+                                $("#" + item.product.product_id).html(`<p class="font-weight-bold">- ${Math.round(item.discount * 100)} %</p>`);
+                                $("#amount1").html(`<p class="font-weight-bold">${formatNumber} VND</p>`);
+                                $("#amount2").html(`<p class="font-weight-bold">${formatNumber} VND</p>`);
                                 $("#notice").html(`<div class="alert alert-success alert-dismissible">
                                                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                                         <strong>Mã giảm giá đã áp dụng thành công !</strong>
                                       </div>`);
-                            } else {
-                                location.reload()
                             }
                         }
-
-
                     }
                 });
             });

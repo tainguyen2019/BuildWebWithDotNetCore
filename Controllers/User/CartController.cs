@@ -132,16 +132,24 @@ namespace BuildWebWithDotNetCore.Controllers.Home
                     return new JsonResult(new Item { Product=null, Quantity=0,discount=0});
 
                 }
+
+                if(pr.expiry_date < DateTime.Now || pr.valid_date >DateTime.Now)
+                {
+                    return new JsonResult(new Item { Product = null, Quantity = 0, discount = 0 });
+
+                }
+
                 List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
 
+
                 int index = isExist(pr.product_id.ToString());
-                if (index != -1 || cart[index].discount ==0)
+                if (index != -1 && cart[index].discount ==0)
                 {
                     
                     cart[index].discount = pr.discount;
                     SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-                    return new JsonResult(cart[index]);
-
+                    var totalPrice = Math.Round(cart.Sum(item => item.Quantity * item.Product.price - item.Product.price * item.discount));
+                    return new JsonResult(new { item= cart[index], totalPrice });
                 }
 
                 return new JsonResult(new Item { Product = null, Quantity = 0, discount = 0 });
