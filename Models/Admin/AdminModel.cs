@@ -43,7 +43,7 @@ namespace BuildWebWithDotNetCore.Models.Admin
                                     join sol in sale_order_line on so.order_id equals sol.order_id
                                     join p in product on sol.product_id equals p.product_id
                                     join c in category on p.category_id equals c.category_id
-                                    group new { c.category_name, sol.amount } by new { c.category_name, sol.amount } into data
+                                    group new { c.category_name, sol.amount} by new { c.category_name} into data
                                     select new AdminModel
                                     (
                                         data.Key.category_name,
