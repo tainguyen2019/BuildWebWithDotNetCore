@@ -25,7 +25,7 @@ namespace BuildWebWithDotNetCore.Controllers.Admin
             int offset = (page - 1) * limit;
 
             DatabaseContext databaseContext = new DatabaseContext();
-            List<SaleOrder> orders = databaseContext.sale_order.ToList();
+            List<SaleOrder> orders = databaseContext.sale_order.OrderByDescending(order => order.create_date).ToList();
             
             int total_order = orders.Count();
             ViewBag.total_order = total_order;

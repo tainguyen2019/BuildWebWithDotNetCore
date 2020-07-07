@@ -40,7 +40,7 @@
 
                             <div class="box-size">
                                 <p>Giá : </p>
-                                <p class="price">@item.Product.price VND</p>
+                                <p class="price">@string.Format("{0:#,0}", item.Product.price) VND</p>
                             </div>
                             @if (item.discount > 0)
                             {
